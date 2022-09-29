@@ -30,7 +30,7 @@ class StreamingServices {
 	public static function echoPhrase($phrase) {
 		static::getHeader();
 
-		return $apiKey . " = " . $accessKey ;
+		return static::$apiKey . " = " . static::$accessKey ;
 	}
 
 /* =
