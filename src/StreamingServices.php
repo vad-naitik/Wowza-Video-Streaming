@@ -56,6 +56,25 @@ class StreamingServices {
 	/* ============================================================================ */
 /* Wowza's FUNCTIONS */
 /* ============================================================================ */
+	public static function CreateLiveStreaming($streamingData) {
+		$url	= "https://api.video.wowza.com/api/v1.8/live_streams";
+		$header = static::getHeader();
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST , "POST");
+		curl_setopt($ch, CURLOPT_URL,$url);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $streamingData);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+		$server_output = curl_exec($ch);
+		$err = curl_error($ch);
+		curl_close ($ch);
+		$output = json_decode($server_output);
+		return $output;
+	}
+
 	public static function GetLiveStreaming($streamingId) {
 		$url	= "https://api.video.wowza.com/api/v1.8/live_streams/$streamingId";
 		$header = static::getHeader();
