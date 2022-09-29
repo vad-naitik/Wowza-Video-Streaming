@@ -18,13 +18,6 @@ class StreamingServices {
 	 */
 	public function __construct() {
 
-		$this->header	= [
-			"Content-Type:"  	. "application/json",
-			"charset:"			. "utf-8",
-			"wsc-api-key:"		. "",
-			"wsc-access-key:"	. "",
-		];
-
 	}
 
 	/**
@@ -35,6 +28,8 @@ class StreamingServices {
 	 * @return string Returns the phrase passed in
 	 */
 	public static function echoPhrase($phrase) {
+		static::getHeader();
+
 		return $apiKey . " = " . $accessKey ;
 	}
 
@@ -48,5 +43,14 @@ class StreamingServices {
 		self::$accessKey = $accessKey;
 	}
 
+	public static function getHeader() {
+		$header	=  [
+			"Content-Type:"  	. "application/json",
+			"charset:"			. "utf-8",
+			"wsc-api-key:"		. static::$apiKey,
+			"wsc-access-key:"	. static::$accessKey,
+		];
+		return $header;
+	}
 
 }
