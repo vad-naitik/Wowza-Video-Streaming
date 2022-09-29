@@ -18,7 +18,7 @@ class StreamingServices {
      *
      * @return string Returns the phrase passed in
      */
-    public function echoPhrase($phrase)
+    public static function echoPhrase($phrase)
     {
         return $phrase;
     }
