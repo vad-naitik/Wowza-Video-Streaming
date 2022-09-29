@@ -1,0 +1,27 @@
+{
+	"name": "vad-naitik/wowza-streaming",
+	"description": "Wowza Video Streaming Service", 
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "vad-naitik",
+			"email": "vad.naitik@gmail.com"
+		}
+	],
+	
+	"minimum-stability": "stable",
+
+	"autoload": {
+		"psr-4": {
+			"VadNaitik\\WowzaStreaming\\": "src"
+		},
+		"files": [
+			"src/helpers.php"
+		]
+	},
+
+	"require": {
+		"php": ">=7.2.0"
+	}
+}
